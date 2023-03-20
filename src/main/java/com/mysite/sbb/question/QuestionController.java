@@ -12,12 +12,13 @@ import java.util.List;
 @Controller
 public class QuestionController {
 
-    private final QuestionRepository questionRepository;
+    private final QuestionService questionService;
+    //questionService 객체는 생성자 방식으로 DI 규칙에 의해 주입된다.
 
     @GetMapping("/question/list")
     public String list(Model model){
 
-        List<Question> questionList = this.questionRepository.findAll();
+        List<Question> questionList = this.questionService.getList();
         model.addAttribute("questionList", questionList);
         return "question_list";
     }
