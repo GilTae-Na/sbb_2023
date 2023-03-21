@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @RequestMapping("/question") //URL 프리픽스(prefix), 공통 url 위로 뺴놓기, 필수는 아님
-@RequiredArgsConstructor //questionRepository 포함하는 생성자 생성, final이 붙은 속성을 포함하는 생성자를 자동으로 생성
+@RequiredArgsConstructor //생성자 주입을 임의의 코드없이 자동으로 설정해주는 어노테이션.
 @Controller
 public class QuestionController {
 
