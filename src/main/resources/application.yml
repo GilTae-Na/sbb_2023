@@ -4,8 +4,8 @@ spring:
   profiles:
     active: dev
   thymeleaf:
-    cache: false # ???? ?? ??
-    prefix: file:src/main/resources/templates/ # ???? ?? ??(? ??? ?? ??)
+    cache: false
+    prefix: file:src/main/resources/templates/
   devtools:
     livereload:
       enabled: true
@@ -18,7 +18,7 @@ spring:
     password: 1234
   jpa:
     hibernate:
-      ddl-auto: update # DB ??? ????(??? ???? ??? ?)
+      ddl-auto: update
     properties:
       hibernate:
         show_sql: true
