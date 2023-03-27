@@ -28,6 +28,7 @@ class SbbApplicationTests {
 	@Autowired
 	private AnswerRepository answerRepository;
 
+	@Autowired
 	private QuestionService questionService;
 
 	/*@BeforeEach
@@ -153,14 +154,13 @@ class SbbApplicationTests {
 		assertEquals(1, answerList.size());
 		assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
 	}
+
 	@Test
 	void test2(){
 		for(int i=1; i<=300; i++){
-			String subject = String.format("테스트입니다:[%03d]", i);
+			String subject = String.format("테스트 데이터입니다:[%03d]", i);
 			String content = "구라지롱";
 			this.questionService.create(subject, content);
 		}
-
 	}
-
 }

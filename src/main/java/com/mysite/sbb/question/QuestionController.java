@@ -1,8 +1,10 @@
 package com.mysite.sbb.question;
 
 import com.mysite.sbb.answer.AnswerForm;
+import groovyjarjarpicocli.CommandLine;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,11 +20,11 @@ public class QuestionController {
     private final QuestionService questionService;
     //questionService 객체는 생성자 방식으로 DI 규칙에 의해 주입된다.
 
+    //스프링부트의 페이징은 첫페이지 번호가 1이 아닌 0이다
     @GetMapping("/list")
-    public String list(Model model){
-
-        List<Question> questionList = this.questionService.getList();
-        model.addAttribute("questionList", questionList);
+    public String list(Model model, @RequestParam(value="page",defaultValue = "0")int page){
+        Page<Question> paging  = this.questionService.getList(page);
+        model.addAttribute("paging", paging);
         return "question_list";
     }
 
