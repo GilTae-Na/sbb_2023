@@ -85,4 +85,15 @@ public class AnswerController {
         //답변 수정시 기존의 내용이 필요하므로 AnswerForm 객체에 조회한 값을 저장
         return String.format("redirect:/question/detail/%s", answer.getQuestion().getId());
     }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/vote/{id}")
+    public String answerVote(Principal principal, @PathVariable("id") Integer id) {
+        //principal.getName()을 호출하면 현재 로그인한 사용자의 사용자명(사용자ID)을 알수 있다.
+        Answer answer = this.answerService.getAnswer(id);
+        SiteUser siteUser = this.userService.getUser(principal.getName());
+        this.answerService.vote(answer, siteUser);
+        //답변 수정시 기존의 내용이 필요하므로 AnswerForm 객체에 조회한 값을 저장
+        return String.format("redirect:/question/detail/%s", answer.getQuestion().getId());
+    }
 }
