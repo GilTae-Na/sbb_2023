@@ -30,6 +30,7 @@ public class QuestionService {
         Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
         Specification<Question> spec = search(kw);
         return this.questionRepository.findAll(spec, pageable);
+        //return this.questionRepository.findAllByKeyword(kw, pageable); -> 리포지토리 쿼리문 사용시
     }
 
     public Question getQuestion(Integer id) {
